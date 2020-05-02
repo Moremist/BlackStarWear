@@ -1,0 +1,6 @@
+module Pods_BlackStarDiploma {
+  umbrella header "Pods-BlackStarDiploma-umbrella.h"
+
+  export *
+  module * { export * }
+}
