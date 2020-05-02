@@ -28,12 +28,15 @@ class WearListViewController: UIViewController {
     
     fileprivate func wearCollectionViewBinding() -> Disposable {
         return wearListArray.bind(to: wearListCollectionView) { (data, index, collectView) -> UICollectionViewCell in
+
             let cell = collectView.dequeueReusableCell(withReuseIdentifier: "wearCell", for: index) as! WearCollectionViewCell
             cell.wearNameLabel.text = data[index.row].name
             cell.wearPriceLabel.text = String(data[index.row].price.split(separator: ".")[0]) + "₽"
             let urlImage = URL(string: "https://blackstarshop.ru/" + data[index.row].mainImage)
             cell.wearImageView.kf.setImage(with: urlImage)
             cell.wearImageView.contentMode = .scaleAspectFit
+            cell.wearImageView.layer.cornerRadius = 20
+            cell.wearImageView.clipsToBounds = true
             self.activityIndicator.alpha = 0
             self.activityIndicator.stopAnimating()
             return cell
