@@ -21,6 +21,8 @@
 		6F136645245DCD6200CF541C /* CategoryDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F136644245DCD6200CF541C /* CategoryDecoder.swift */; };
 		6F136648245DDB1300CF541C /* WearListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F136647245DDB1300CF541C /* WearListViewController.swift */; };
 		6F13664A245DDB4C00CF541C /* WearCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F136649245DDB4C00CF541C /* WearCollectionViewCell.swift */; };
+		6F9EA3B2245ECA27007A54CD /* WearDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9EA3B1245ECA27007A54CD /* WearDetailCollectionViewCell.swift */; };
+		6FC35147245EC7D100C34793 /* WearDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC35146245EC7D100C34793 /* WearDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,8 @@
 		6F136644245DCD6200CF541C /* CategoryDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDecoder.swift; sourceTree = "<group>"; };
 		6F136647245DDB1300CF541C /* WearListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WearListViewController.swift; sourceTree = "<group>"; };
 		6F136649245DDB4C00CF541C /* WearCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WearCollectionViewCell.swift; sourceTree = "<group>"; };
+		6F9EA3B1245ECA27007A54CD /* WearDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WearDetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		6FC35146245EC7D100C34793 /* WearDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WearDetailViewController.swift; sourceTree = "<group>"; };
 		9FEE52B346DAE57216497027 /* libPods-BlackStarDiploma.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BlackStarDiploma.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -78,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				6F136625245D91C200CF541C /* Main.storyboard */,
+				6FC35148245EC80500C34793 /* WearDetailScreen */,
 				6F136628245D91C800CF541C /* Assets.xcassets */,
 				6F13662D245D91C800CF541C /* Info.plist */,
 				6F136646245DDAE800CF541C /* WearListScreen */,
@@ -125,6 +130,15 @@
 				6F136649245DDB4C00CF541C /* WearCollectionViewCell.swift */,
 			);
 			path = WearListScreen;
+			sourceTree = "<group>";
+		};
+		6FC35148245EC80500C34793 /* WearDetailScreen */ = {
+			isa = PBXGroup;
+			children = (
+				6FC35146245EC7D100C34793 /* WearDetailViewController.swift */,
+				6F9EA3B1245ECA27007A54CD /* WearDetailCollectionViewCell.swift */,
+			);
+			path = WearDetailScreen;
 			sourceTree = "<group>";
 		};
 		AF8F78866E7FD11BCEDFCD75 /* Frameworks */ = {
@@ -243,9 +257,11 @@
 			files = (
 				6F13663B245D954300CF541C /* CategoryViewController.swift in Sources */,
 				6F136642245DBC5600CF541C /* SegueSwizzler.swift in Sources */,
+				6F9EA3B2245ECA27007A54CD /* WearDetailCollectionViewCell.swift in Sources */,
 				6F136645245DCD6200CF541C /* CategoryDecoder.swift in Sources */,
 				6F13663E245DAA3900CF541C /* SubCategoryViewController.swift in Sources */,
 				6F136639245D94BF00CF541C /* CategoryTableViewCell.swift in Sources */,
+				6FC35147245EC7D100C34793 /* WearDetailViewController.swift in Sources */,
 				6F13664A245DDB4C00CF541C /* WearCollectionViewCell.swift in Sources */,
 				6F136648245DDB1300CF541C /* WearListViewController.swift in Sources */,
 				6F136620245D91C200CF541C /* AppDelegate.swift in Sources */,

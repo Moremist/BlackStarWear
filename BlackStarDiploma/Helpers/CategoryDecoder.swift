@@ -60,8 +60,16 @@ enum TypeEnum: String, Codable {
 }
 
 //MARK: - Wears
-struct Wears: Decodable {
+struct Wear: Decodable {
     var name, englishName, sortOrder, article, description, colorName, colorImageURL, mainImage, price : String
+    var productImages: [WearImage]
+    var offers : [Offers]
 }
 
+struct WearImage: Decodable {
+    var imageURL, sortOrder: String
+}
 
+struct Offers: Decodable {
+    var size : String
+}

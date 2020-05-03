@@ -7,7 +7,7 @@ import ReactiveKit
 class WearListViewController: UIViewController {
     
     var subcategoryID: ID?
-    var wearListArray = MutableObservableArray<Wears>([])
+    var wearListArray = MutableObservableArray<Wear>([])
     @IBOutlet weak var wearListCollectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     let disposedBag = DisposeBag()
@@ -17,6 +17,13 @@ class WearListViewController: UIViewController {
         loadWearList()
         configureWearListController()
         wearCollectionViewBinding().dispose(in: disposedBag)
+        wearListCollectionView.reactive.selectedItemIndexPath.observeNext { (indexPath) in
+            self.performSegueWithIdentifier(identifier: "toWearDetail", sender: nil) { (segue) in
+                if let vc = segue.destination as? WearDetailViewController {
+                    vc.wear = self.wearListArray[indexPath.row]
+                }
+            }
+        }.dispose(in: disposedBag)
     }
     
     fileprivate func configureWearListController() {
@@ -49,7 +56,7 @@ extension WearListViewController {
     func loadWearList(){
         guard let catID = subcategoryID?.valueString() else { return }
         AF.request("https://blackstarshop.ru/index.php?route=api/v1/products&cat_id=" + catID ).validate().responseJSON { (response) in
-            guard let wears = try? JSONDecoder().decode([String: Wears].self, from: response.data!) else {
+            guard let wears = try? JSONDecoder().decode([String: Wear].self, from: response.data!) else {
                 print("Error while decode")
                 return
             }
