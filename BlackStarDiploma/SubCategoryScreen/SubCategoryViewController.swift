@@ -10,6 +10,18 @@ class SubCategoryViewController: UIViewController {
     var subCat = MutableObservableArray<Subcategory>([])
     var dispBag = DisposeBag()
     
+    //MARK: - viewDidLoad
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
+        subTableView.delegate = self
+        
+        generateSubCat()
+        configureSubTableViewBinding().dispose(in: dispBag)
+        configureSelectedRowSubTableView().dispose(in: dispBag)
+    }
+    
+    //MARK: - configureSelectedRowSubTableView
     fileprivate func configureSelectedRowSubTableView() -> Disposable {
         return subTableView.reactive.selectedRowIndexPath.observeNext { (index) in
             self.subTableView.deselectRow(at: index, animated: true)
@@ -21,24 +33,27 @@ class SubCategoryViewController: UIViewController {
         }
     }
     
+    //MARK: - configureSubTableViewBinding
     fileprivate func configureSubTableViewBinding() -> Disposable {
         return subCat.bind(to: subTableView) { (data, indexPath, tableView) -> UITableViewCell in
             let cell = tableView.dequeueReusableCell(withIdentifier: "subcatCell") as! SubCategoryTableViewCell
             cell.subCatNameLabel.text = data[indexPath.row].name
-            let url = URL(string: "https://blackstarshop.ru/" + data[indexPath.row].iconImage)
-            cell.subCatImageView.kf.setImage(with: url)
+            if data[indexPath.row].iconImage == "" {
+                switch data[indexPath.row].name {
+                case "Скидки":
+                    cell.subCatImageView.image = UIImage(named: "commerce-and-shopping")
+                default:
+                    cell.subCatImageView.image = UIImage(named: "signaling")
+                }
+            } else {
+                let url = URL(string: "https://blackstarshop.ru/" + data[indexPath.row].iconImage)
+                cell.subCatImageView.kf.setImage(with: url)
+            }
             return cell
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        overrideUserInterfaceStyle = .light
-        generateSubCat()
-        configureSubTableViewBinding().dispose(in: dispBag)
-        configureSelectedRowSubTableView().dispose(in: dispBag)
-    }
-    
+    //MARK: - generateSubCat
     func generateSubCat(){
         guard let subs = subcategories else {
             return
@@ -48,5 +63,19 @@ class SubCategoryViewController: UIViewController {
                 subCat.append(sub)
             }
         }
+    }
+}
+
+//MARK: - UITableViewDelegate
+extension SubCategoryViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.alpha = 0
+
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0.05 * Double(indexPath.row),
+            animations: {
+                cell.alpha = 1
+        })
     }
 }

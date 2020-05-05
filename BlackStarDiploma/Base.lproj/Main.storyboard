@@ -74,7 +74,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Категории" landscapeImage="rectangle.fill.on.rectangle.angled.fill" catalog="system" id="Drb-kh-zg1"/>
-                    <navigationItem key="navigationItem" title="Категории" id="7NS-gb-GZW"/>
+                    <navigationItem key="navigationItem" id="7NS-gb-GZW">
+                        <nil key="title"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="2ED-Bp-gIO" id="r5x-87-QAk"/>
                         <outlet property="categoryTableView" destination="JYx-Pl-WOh" id="Fig-Om-Hly"/>
@@ -232,8 +234,8 @@
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="YNS-9a-Mx8" id="CuW-v1-g0N"/>
-                                    <outlet property="delegate" destination="YNS-9a-Mx8" id="hYv-3Z-ofK"/>
+                                    <outlet property="dataSource" destination="YNS-9a-Mx8" id="nQr-kO-jFd"/>
+                                    <outlet property="delegate" destination="YNS-9a-Mx8" id="Pi2-05-d4R"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -271,7 +273,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8R8-81-Waa">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                         <subviews>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dkM-au-DxN">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dkM-au-DxN">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="420"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
@@ -351,7 +353,7 @@
                                                 </constraints>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZF1-Qn-Ukg">
-                                                <rect key="frame" x="25" y="573" width="364" height="50"/>
+                                                <rect key="frame" x="25" y="593" width="364" height="50"/>
                                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="mz5-gn-b8E"/>
@@ -362,15 +364,15 @@
                                                 </state>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="085-zh-0nf">
-                                                <rect key="frame" x="25" y="643" width="364" height="20.333333333333371"/>
+                                                <rect key="frame" x="25" y="663" width="364" height="20.333333333333371"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ceM-jz-We2">
-                                                <rect key="frame" x="25" y="498" width="364" height="60"/>
+                                                <rect key="frame" x="25" y="498" width="364" height="80"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="BwH-dW-geg"/>
+                                                    <constraint firstAttribute="height" constant="80" id="BwH-dW-geg"/>
                                                 </constraints>
                                             </pickerView>
                                         </subviews>
@@ -406,12 +408,21 @@
                                     <constraint firstItem="8R8-81-Waa" firstAttribute="leading" secondItem="YPz-c6-2OE" secondAttribute="leading" id="oHo-BX-ctI"/>
                                 </constraints>
                             </scrollView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shape" translatesAutoresizingMaskIntoConstraints="NO" id="kO2-pQ-oSC">
+                                <rect key="frame" x="157" y="398" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="75G-WS-Nm3"/>
+                                    <constraint firstAttribute="width" constant="100" id="TyR-hJ-6Le"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="YPz-c6-2OE" firstAttribute="leading" secondItem="XeS-m6-mV1" secondAttribute="leading" id="AWh-Xj-hoO"/>
+                            <constraint firstItem="kO2-pQ-oSC" firstAttribute="centerX" secondItem="JUV-Ol-17C" secondAttribute="centerX" id="COK-br-EJN"/>
                             <constraint firstItem="XeS-m6-mV1" firstAttribute="trailing" secondItem="YPz-c6-2OE" secondAttribute="trailing" id="GGL-CV-bhL"/>
                             <constraint firstItem="XeS-m6-mV1" firstAttribute="bottom" secondItem="YPz-c6-2OE" secondAttribute="bottom" id="MnF-eP-K1h"/>
+                            <constraint firstItem="kO2-pQ-oSC" firstAttribute="centerY" secondItem="JUV-Ol-17C" secondAttribute="centerY" id="WsF-l2-bXV"/>
                             <constraint firstItem="8R8-81-Waa" firstAttribute="height" secondItem="JUV-Ol-17C" secondAttribute="height" priority="250" id="b2N-DR-jtZ"/>
                             <constraint firstItem="YPz-c6-2OE" firstAttribute="top" secondItem="XeS-m6-mV1" secondAttribute="top" id="hUU-Mx-pHY"/>
                             <constraint firstItem="8R8-81-Waa" firstAttribute="width" secondItem="JUV-Ol-17C" secondAttribute="width" id="n4V-Ye-o5m"/>
@@ -425,6 +436,7 @@
                         <outlet property="height" destination="b2N-DR-jtZ" id="73A-xC-9DZ"/>
                         <outlet property="imagesCollectView" destination="dkM-au-DxN" id="p0a-jr-xpP"/>
                         <outlet property="pageControll" destination="NAS-BK-3o1" id="fbC-Ps-5qT"/>
+                        <outlet property="purchasedImage" destination="kO2-pQ-oSC" id="UDG-eb-jiu"/>
                         <outlet property="scrollView" destination="YPz-c6-2OE" id="Y0f-bO-xo5"/>
                         <outlet property="sizePickerView" destination="ceM-jz-We2" id="xwU-L2-1RF"/>
                         <outlet property="wearNameLabel" destination="sh2-c7-CMa" id="A8n-Hc-MHP"/>
@@ -443,6 +455,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eNW-vC-N2m">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -457,5 +473,6 @@
     <resources>
         <image name="bswlogo" width="1920" height="1916"/>
         <image name="rectangle.fill.on.rectangle.angled.fill" catalog="system" width="128" height="101"/>
+        <image name="shape" width="512" height="512"/>
     </resources>
 </document>
