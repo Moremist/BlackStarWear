@@ -5,4 +5,6 @@ class WearCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var wearImageView: UIImageView!
     @IBOutlet weak var wearPriceLabel: UILabel!
     
+    var isAnimated = false
+    
 }

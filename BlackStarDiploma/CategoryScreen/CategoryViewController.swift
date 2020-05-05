@@ -19,8 +19,6 @@ class CategoryViewController: UIViewController {
         
         categoryTableView.delegate = self
         
-        
-        
         overrideUserInterfaceStyle = .light
         activityIndicator.alpha = 1
         categoryTableView.alpha = 0
@@ -47,6 +45,7 @@ class CategoryViewController: UIViewController {
             self.activityIndicator.stopAnimating()
             self.activityIndicator.alpha = 0
             self.categoryTableView.alpha = 1
+
             return cell
         }
     }
@@ -58,6 +57,7 @@ class CategoryViewController: UIViewController {
             self.performSegueWithIdentifier(identifier: "toSubCat", sender: nil) { (segue) in
                 if let vc = segue.destination as? SubCategoryViewController {
                     vc.subcategories = self.categoryesArray[indexPath.row].subcategories
+                    vc.categoryName = self.categoryesArray[indexPath.row].name
                 }
             }
         }

@@ -9,12 +9,14 @@ class SubCategoryViewController: UIViewController {
     var subcategories: [Subcategory]?
     var subCat = MutableObservableArray<Subcategory>([])
     var dispBag = DisposeBag()
+    var categoryName : String?
     
     //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
         subTableView.delegate = self
+        navigationItem.title = categoryName
         
         generateSubCat()
         configureSubTableViewBinding().dispose(in: dispBag)
@@ -28,6 +30,7 @@ class SubCategoryViewController: UIViewController {
             self.performSegueWithIdentifier(identifier: "toWearList", sender: nil) { (segue) in
                 if let vc = segue.destination as? WearListViewController {
                     vc.subcategoryID = self.subCat[index.row].id
+                    vc.subCatName = self.subCat[index.row].name	
                 }
             }
         }

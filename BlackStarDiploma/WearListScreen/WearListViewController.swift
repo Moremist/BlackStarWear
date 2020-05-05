@@ -8,12 +8,16 @@ class WearListViewController: UIViewController {
     
     var subcategoryID: ID?
     var wearListArray = Array<Wear>([])
+    var subCatName : String?
     @IBOutlet weak var wearListCollectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.title = subCatName
+        
         loadWearList()
         configureWearListController()
         
@@ -109,6 +113,4 @@ extension WearListViewController: UICollectionViewDelegate, UICollectionViewData
             }
         }
     }
-    
-    
 }

@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JYx-Pl-WOh">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="98" width="414" height="764"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationWidth="10" reuseIdentifier="catCell" id="a2b-T3-v6v" customClass="CategoryTableViewCell" customModule="Black_Star_Wear" customModuleProvider="target">
@@ -67,7 +67,7 @@
                             <constraint firstItem="2ED-Bp-gIO" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="4aM-dT-iRX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="JYx-Pl-WOh" secondAttribute="bottom" id="HeM-2r-bTL"/>
                             <constraint firstItem="JYx-Pl-WOh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="J9j-dm-0qb"/>
-                            <constraint firstItem="JYx-Pl-WOh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Jkp-Fc-VPv"/>
+                            <constraint firstItem="JYx-Pl-WOh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="Jkp-Fc-VPv"/>
                             <constraint firstItem="JYx-Pl-WOh" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Lei-C5-fPl"/>
                             <constraint firstItem="2ED-Bp-gIO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eVF-hA-D4y"/>
                         </constraints>
@@ -179,7 +179,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </activityIndicatorView>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="wearCell" id="h2N-wu-xGi" customClass="WearCollectionViewCell" customModule="Black_Star_Wear">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="center" reuseIdentifier="wearCell" id="h2N-wu-xGi" customClass="WearCollectionViewCell" customModule="Black_Star_Wear">
                                         <rect key="frame" x="5" y="0.0" width="202" height="320"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="JZ8-Rm-rnd">
@@ -324,16 +324,16 @@
                                                 <color key="currentPageIndicatorTintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </pageControl>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sh2-c7-CMa">
-                                                <rect key="frame" x="0.0" y="425" width="414" height="35"/>
+                                                <rect key="frame" x="0.0" y="425" width="414" height="45"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="35" id="lWw-hB-HfZ"/>
+                                                    <constraint firstAttribute="height" constant="45" id="lWw-hB-HfZ"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IVE-bq-HVY">
-                                                <rect key="frame" x="25" y="465" width="364" height="25"/>
+                                                <rect key="frame" x="25" y="475" width="364" height="25"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Стоимость:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1C-wP-aaz">
                                                         <rect key="frame" x="0.0" y="0.0" width="91.333333333333329" height="25"/>
@@ -353,7 +353,7 @@
                                                 </constraints>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZF1-Qn-Ukg">
-                                                <rect key="frame" x="25" y="593" width="364" height="50"/>
+                                                <rect key="frame" x="25" y="603" width="364" height="50"/>
                                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="mz5-gn-b8E"/>
@@ -364,13 +364,13 @@
                                                 </state>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="085-zh-0nf">
-                                                <rect key="frame" x="25" y="663" width="364" height="20.333333333333371"/>
+                                                <rect key="frame" x="25" y="673" width="364" height="20.333333333333371"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ceM-jz-We2">
-                                                <rect key="frame" x="25" y="498" width="364" height="80"/>
+                                                <rect key="frame" x="25" y="508" width="364" height="80"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="80" id="BwH-dW-geg"/>
                                                 </constraints>
