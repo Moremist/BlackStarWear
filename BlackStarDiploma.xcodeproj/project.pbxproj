@@ -18,9 +18,12 @@
 		6F13663E245DAA3900CF541C /* SubCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F13663D245DAA3900CF541C /* SubCategoryViewController.swift */; };
 		6F136640245DAA5800CF541C /* SubCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F13663F245DAA5800CF541C /* SubCategoryTableViewCell.swift */; };
 		6F136642245DBC5600CF541C /* SegueSwizzler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F136641245DBC5600CF541C /* SegueSwizzler.swift */; };
-		6F136645245DCD6200CF541C /* CategoryDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F136644245DCD6200CF541C /* CategoryDecoder.swift */; };
+		6F136645245DCD6200CF541C /* HelpersAndDecoders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F136644245DCD6200CF541C /* HelpersAndDecoders.swift */; };
 		6F136648245DDB1300CF541C /* WearListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F136647245DDB1300CF541C /* WearListViewController.swift */; };
 		6F13664A245DDB4C00CF541C /* WearCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F136649245DDB4C00CF541C /* WearCollectionViewCell.swift */; };
+		6F6713E02462BC0100EA57D0 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6713DF2462BC0100EA57D0 /* CustomNavigationBar.swift */; };
+		6F6713E22462BDB500EA57D0 /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6713E12462BDB500EA57D0 /* BasketViewController.swift */; };
+		6F6713E42462BE0E00EA57D0 /* BasketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6713E32462BE0E00EA57D0 /* BasketTableViewCell.swift */; };
 		6F9EA3B2245ECA27007A54CD /* WearDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9EA3B1245ECA27007A54CD /* WearDetailCollectionViewCell.swift */; };
 		6FC35147245EC7D100C34793 /* WearDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC35146245EC7D100C34793 /* WearDetailViewController.swift */; };
 /* End PBXBuildFile section */
@@ -40,9 +43,12 @@
 		6F13663D245DAA3900CF541C /* SubCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoryViewController.swift; sourceTree = "<group>"; };
 		6F13663F245DAA5800CF541C /* SubCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		6F136641245DBC5600CF541C /* SegueSwizzler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueSwizzler.swift; sourceTree = "<group>"; };
-		6F136644245DCD6200CF541C /* CategoryDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDecoder.swift; sourceTree = "<group>"; };
+		6F136644245DCD6200CF541C /* HelpersAndDecoders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpersAndDecoders.swift; sourceTree = "<group>"; };
 		6F136647245DDB1300CF541C /* WearListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WearListViewController.swift; sourceTree = "<group>"; };
 		6F136649245DDB4C00CF541C /* WearCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WearCollectionViewCell.swift; sourceTree = "<group>"; };
+		6F6713DF2462BC0100EA57D0 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
+		6F6713E12462BDB500EA57D0 /* BasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
+		6F6713E32462BE0E00EA57D0 /* BasketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketTableViewCell.swift; sourceTree = "<group>"; };
 		6F9EA3B1245ECA27007A54CD /* WearDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WearDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		6FC35146245EC7D100C34793 /* WearDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WearDetailViewController.swift; sourceTree = "<group>"; };
 		9FEE52B346DAE57216497027 /* libPods-BlackStarDiploma.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BlackStarDiploma.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				6F136625245D91C200CF541C /* Main.storyboard */,
+				6F6713E52462BE1200EA57D0 /* BasketScreen */,
 				6FC35148245EC80500C34793 /* WearDetailScreen */,
 				6F136628245D91C800CF541C /* Assets.xcassets */,
 				6F13662D245D91C800CF541C /* Info.plist */,
@@ -98,6 +105,7 @@
 			children = (
 				6F136638245D94BF00CF541C /* CategoryTableViewCell.swift */,
 				6F13663A245D954300CF541C /* CategoryViewController.swift */,
+				6F6713DF2462BC0100EA57D0 /* CustomNavigationBar.swift */,
 			);
 			path = CategoryScreen;
 			sourceTree = "<group>";
@@ -118,7 +126,7 @@
 				6F136621245D91C200CF541C /* SceneDelegate.swift */,
 				6F13661F245D91C200CF541C /* AppDelegate.swift */,
 				6F136641245DBC5600CF541C /* SegueSwizzler.swift */,
-				6F136644245DCD6200CF541C /* CategoryDecoder.swift */,
+				6F136644245DCD6200CF541C /* HelpersAndDecoders.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -130,6 +138,15 @@
 				6F136649245DDB4C00CF541C /* WearCollectionViewCell.swift */,
 			);
 			path = WearListScreen;
+			sourceTree = "<group>";
+		};
+		6F6713E52462BE1200EA57D0 /* BasketScreen */ = {
+			isa = PBXGroup;
+			children = (
+				6F6713E12462BDB500EA57D0 /* BasketViewController.swift */,
+				6F6713E32462BE0E00EA57D0 /* BasketTableViewCell.swift */,
+			);
+			path = BasketScreen;
 			sourceTree = "<group>";
 		};
 		6FC35148245EC80500C34793 /* WearDetailScreen */ = {
@@ -257,15 +274,18 @@
 			files = (
 				6F13663B245D954300CF541C /* CategoryViewController.swift in Sources */,
 				6F136642245DBC5600CF541C /* SegueSwizzler.swift in Sources */,
+				6F6713E22462BDB500EA57D0 /* BasketViewController.swift in Sources */,
 				6F9EA3B2245ECA27007A54CD /* WearDetailCollectionViewCell.swift in Sources */,
-				6F136645245DCD6200CF541C /* CategoryDecoder.swift in Sources */,
+				6F136645245DCD6200CF541C /* HelpersAndDecoders.swift in Sources */,
 				6F13663E245DAA3900CF541C /* SubCategoryViewController.swift in Sources */,
+				6F6713E02462BC0100EA57D0 /* CustomNavigationBar.swift in Sources */,
 				6F136639245D94BF00CF541C /* CategoryTableViewCell.swift in Sources */,
 				6FC35147245EC7D100C34793 /* WearDetailViewController.swift in Sources */,
 				6F13664A245DDB4C00CF541C /* WearCollectionViewCell.swift in Sources */,
 				6F136648245DDB1300CF541C /* WearListViewController.swift in Sources */,
 				6F136620245D91C200CF541C /* AppDelegate.swift in Sources */,
 				6F136622245D91C200CF541C /* SceneDelegate.swift in Sources */,
+				6F6713E42462BE0E00EA57D0 /* BasketTableViewCell.swift in Sources */,
 				6F136640245DAA5800CF541C /* SubCategoryTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

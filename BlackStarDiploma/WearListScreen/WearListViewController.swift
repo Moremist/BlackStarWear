@@ -95,7 +95,7 @@ extension WearListViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "wearCell", for: indexPath) as! WearCollectionViewCell
-        cell.wearNameLabel.text = wearListArray[indexPath.row].name
+        cell.wearNameLabel.text = wearListArray[indexPath.row].name.replacingOccurrences(of: "&amp;", with: " ")
         cell.wearPriceLabel.text = String(wearListArray[indexPath.row].price.split(separator: ".")[0]) + "₽"
         let urlImage = URL(string: "https://blackstarshop.ru/" + (wearListArray[indexPath.row].mainImage))
         cell.wearImageView.kf.setImage(with: urlImage)
@@ -110,6 +110,8 @@ extension WearListViewController: UICollectionViewDelegate, UICollectionViewData
         self.performSegueWithIdentifier(identifier: "toWearDetail", sender: nil) { (segue) in
             if let vc = segue.destination as? WearDetailViewController {
                 vc.wear = self.wearListArray[indexPath.row]
+                vc.defaultImageUrlString = self.wearListArray[indexPath.row].mainImage
+                vc.categoryName = self.subCatName
             }
         }
     }

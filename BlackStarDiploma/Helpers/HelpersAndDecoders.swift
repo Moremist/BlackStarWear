@@ -73,3 +73,8 @@ struct WearImage: Decodable {
 struct Offers: Decodable {
     var size : String
 }
+
+struct WearWithOffer {
+    var item: Wear
+    var offer: String
+}

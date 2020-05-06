@@ -14,7 +14,7 @@ extension UIViewController {
     
     typealias ConfiguratePerformSegue = (UIStoryboardSegue) -> ()
     func performSegueWithIdentifier(identifier: String, sender: AnyObject?, configurate: ConfiguratePerformSegue?) {
-        UIViewController.swizzlingPrepareForSegue
+        print(UIViewController.swizzlingPrepareForSegue)
         configuratePerformSegue = configurate
         performSegue(withIdentifier: identifier, sender: sender)
     }

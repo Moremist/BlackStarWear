@@ -10,8 +10,9 @@ class WearDetailViewController: UIViewController {
     var dispBag = DisposeBag()
     var sizeArray = MutableObservableArray<String>([])
     var scrollImpactDid = false
+    var defaultImageUrlString: String?
+    var categoryName: String?
     
-    @IBOutlet weak var purchasedImage: UIImageView!
     @IBOutlet weak var imagesCollectView: UICollectionView!
     @IBOutlet weak var wearPriceLabel: UILabel!
     @IBOutlet weak var buyButton: UIButton!
@@ -21,15 +22,22 @@ class WearDetailViewController: UIViewController {
     @IBOutlet weak var pageControll: UIPageControl!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var sizePickerView: UIPickerView!
+    @IBOutlet weak var purchaseView: UIView!
+    @IBOutlet weak var purchseViewTrailing: NSLayoutConstraint!
+    
     
     
 //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        purchasedImage.alpha = 0
         imagesCollectView.alpha = 0
         overrideUserInterfaceStyle = .light
+        navigationItem.backBarButtonItem?.title = categoryName
+        
+        purchaseView.layer.cornerRadius = 20
+        purchaseView.clipsToBounds = true
+        purchseViewTrailing.constant = -200
         
         imagesCollectView.delegate = self
         sizePickerView.delegate = self
@@ -39,7 +47,7 @@ class WearDetailViewController: UIViewController {
         imagesCollectView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         imagesCollectView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
         
-        wearNameLabel.text = wear?.name
+        wearNameLabel.text = wear?.name.replacingOccurrences(of: "&amp;", with: " ")
         wearPriceLabel.text = (wear?.price.split(separator: ".")[0])! + "₽"
         descriptionLabel.text = wear?.description.replacingOccurrences(of: "&nbsp;", with: " ")
         height.constant += sizePickerView.bounds.height +  (descriptionLabel.text?.heightWithConstrainedWidth(width: self.view.bounds.width, font: descriptionLabel.font) ?? 0)
@@ -54,9 +62,14 @@ class WearDetailViewController: UIViewController {
 //MARK: - preparing arrays
     fileprivate func prepareImageArray(){
         guard let wearImages = wear?.productImages else { return }
-        for image in wearImages {
-            imagesURLs.append(image.imageURL)
+        if !(wear?.productImages.isEmpty)! {
+            for image in wearImages {
+                imagesURLs.append(image.imageURL)
+            }
+        } else {
+            imagesURLs.append(defaultImageUrlString!)
         }
+        
         pageControll.numberOfPages = imagesURLs.count
     }
     
@@ -77,7 +90,8 @@ class WearDetailViewController: UIViewController {
             cell.imageView.kf.setImage(with: imageUrlString)
             cell.imageView.widthAnchor.constraint(equalToConstant: self.view.bounds.width).isActive = true
             cell.widthAnchor.constraint(equalToConstant: self.view.bounds.width).isActive = true
-            cell.contentMode = .center
+            cell.heightAnchor.constraint(equalTo: cell.widthAnchor, multiplier: 1).isActive = true
+            cell.contentMode = .scaleToFill
             colletView.alpha = 1
             return cell
         }
@@ -89,27 +103,35 @@ class WearDetailViewController: UIViewController {
         buyButton.addTarget(nil, action: #selector(buyButtonPressed), for: .touchUpInside)
     }
     
-
 //MARK: - buyButtonPressed
     @objc func buyButtonPressed(){
-        print(sizeArray[sizePickerView.selectedRow(inComponent: 0)], wear?.article ?? "error")
+        UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+        
+        guard let basketVC = storyboard!.instantiateViewController(identifier: "basketVC") as? BasketViewController else { return }
+        let offer = sizeArray[sizePickerView.selectedRow(inComponent: 0)]
+        basketVC.add(item: WearWithOffer(item: wear!, offer: offer))
+        
         buyButton.layer.removeAllAnimations()
+        purchaseView.layer.removeAllAnimations()
         UIView.animate(withDuration: 0.2,
         animations: {
             self.buyButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         },
         completion: { _ in
+            self.purchseViewTrailing.constant = -100
             UIView.animate(withDuration: 0.2) {
                 self.buyButton.transform = CGAffineTransform.identity
-                self.purchasedImage.alpha = 1
+                self.view.layoutIfNeeded()
             }
         })
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            self.purchseViewTrailing.constant = -200
             UIView.animate(withDuration: 0.2) {
-                self.purchasedImage.alpha = 0
+                self.view.layoutIfNeeded()
             }
         }
     }
+
 
 }
 

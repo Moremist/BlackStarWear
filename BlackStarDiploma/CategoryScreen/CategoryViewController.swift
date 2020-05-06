@@ -20,6 +20,7 @@ class CategoryViewController: UIViewController {
         categoryTableView.delegate = self
         
         overrideUserInterfaceStyle = .light
+        
         activityIndicator.alpha = 1
         categoryTableView.alpha = 0
         
@@ -82,17 +83,18 @@ class CategoryViewController: UIViewController {
             }
         }
     }
+    @IBOutlet weak var barView: UIView!
     
     //MARK: - addNavBarImage
     fileprivate func addNavBarImage() {
-        let navController = navigationController!
+//        let navController = navigationController!
         let image = UIImage(named: "Black_Star_Wear_Guidelines_wear")
         let imageView = UIImageView(image: image)
-        let bannerWidth = navController.navigationBar.frame.size.width
-        let bannerHeight = navController.navigationBar.frame.size.height
-        let bannerX = bannerWidth / 2 - (image?.size.width)! / 2
-        let bannerY = bannerHeight / 2 - (image?.size.height)! / 2
-        imageView.frame = CGRect(x: bannerX, y: bannerY, width: bannerWidth, height: bannerHeight)
+//        let bannerWidth = navController.navigationBar.frame.size.width
+//        let bannerHeight = navController.navigationBar.frame.size.height
+//        let bannerX = bannerWidth / 2 - (image?.size.width)! / 2
+//        let bannerY = bannerHeight / 2 - (image?.size.height)! / 2
+//        imageView.frame = CGRect(x: bannerX, y: bannerY, width: bannerWidth, height: bannerHeight)
         imageView.contentMode = .scaleAspectFit
         navigationItem.titleView = imageView
     }
