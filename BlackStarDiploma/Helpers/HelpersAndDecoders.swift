@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 //MARK: - Main category
 struct Category: Codable {
@@ -77,4 +78,20 @@ struct Offers: Decodable {
 struct WearWithOffer {
     var item: Wear
     var offer: String
+}
+
+extension String {
+    func heightWithConstrainedWidth(width: CGFloat, font: UIFont) -> CGFloat {
+        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
+        let boundingBox = self.boundingRect(with: constraintRect, options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: [NSAttributedString.Key.font: font], context: nil)
+        return boundingBox.height
+    }
+    
+    func priceInRubles() -> String {
+        return self.split(separator: ".")[0] + "₽"
+    }
+    
+    func cleanName() -> String {
+        return self.replacingOccurrences(of: "&nbsp;", with: " ").replacingOccurrences(of: "&amp;", with: " ")
+    }
 }

@@ -16,8 +16,6 @@ class WearListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = subCatName
-        
         loadWearList()
         configureWearListController()
         
@@ -26,8 +24,10 @@ class WearListViewController: UIViewController {
         
         wearListCollectionView.delegate = self
         wearListCollectionView.dataSource = self
-        
-
+    
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        navigationItem.title = subCatName
     }
 
 //MARK: - configureWearListController
@@ -112,6 +112,7 @@ extension WearListViewController: UICollectionViewDelegate, UICollectionViewData
                 vc.wear = self.wearListArray[indexPath.row]
                 vc.defaultImageUrlString = self.wearListArray[indexPath.row].mainImage
                 vc.categoryName = self.subCatName
+                UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
             }
         }
     }

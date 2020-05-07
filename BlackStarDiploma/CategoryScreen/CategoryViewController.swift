@@ -16,8 +16,9 @@ class CategoryViewController: UIViewController {
     //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         categoryTableView.delegate = self
+        tabBarController?.delegate = self
         
         overrideUserInterfaceStyle = .light
         
@@ -42,7 +43,7 @@ class CategoryViewController: UIViewController {
             cell.categoryImageView.kf.setImage(with: imageURL)
             cell.categoryImageView.layer.cornerRadius = cell.categoryImageView.frame.width / 2
             cell.categoryImageView.clipsToBounds = true
-            cell.categoryImageView.contentMode = .scaleAspectFit
+            cell.categoryImageView.contentMode = .scaleAspectFill
             self.activityIndicator.stopAnimating()
             self.activityIndicator.alpha = 0
             self.categoryTableView.alpha = 1
@@ -59,6 +60,7 @@ class CategoryViewController: UIViewController {
                 if let vc = segue.destination as? SubCategoryViewController {
                     vc.subcategories = self.categoryesArray[indexPath.row].subcategories
                     vc.categoryName = self.categoryesArray[indexPath.row].name
+                    UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
                 }
             }
         }
@@ -87,14 +89,8 @@ class CategoryViewController: UIViewController {
     
     //MARK: - addNavBarImage
     fileprivate func addNavBarImage() {
-//        let navController = navigationController!
         let image = UIImage(named: "Black_Star_Wear_Guidelines_wear")
         let imageView = UIImageView(image: image)
-//        let bannerWidth = navController.navigationBar.frame.size.width
-//        let bannerHeight = navController.navigationBar.frame.size.height
-//        let bannerX = bannerWidth / 2 - (image?.size.width)! / 2
-//        let bannerY = bannerHeight / 2 - (image?.size.height)! / 2
-//        imageView.frame = CGRect(x: bannerX, y: bannerY, width: bannerWidth, height: bannerHeight)
         imageView.contentMode = .scaleAspectFit
         navigationItem.titleView = imageView
     }
@@ -112,5 +108,12 @@ extension CategoryViewController: UITableViewDelegate {
             animations: {
                 cell.alpha = 1
         })
+    }
+}
+
+extension CategoryViewController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        guard let vc = viewController as? BasketViewController else { return }
+        vc.basketIsEmptyCheck()
     }
 }

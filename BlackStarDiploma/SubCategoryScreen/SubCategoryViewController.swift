@@ -15,12 +15,17 @@ class SubCategoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
-        subTableView.delegate = self
-        navigationItem.title = categoryName
         
+        subTableView.delegate = self
+    
         generateSubCat()
         configureSubTableViewBinding().dispose(in: dispBag)
         configureSelectedRowSubTableView().dispose(in: dispBag)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        navigationItem.title = categoryName
+        navigationItem.backBarButtonItem?.title = "Категории"
+        view.layoutIfNeeded()
     }
     
     //MARK: - configureSelectedRowSubTableView
@@ -30,7 +35,8 @@ class SubCategoryViewController: UIViewController {
             self.performSegueWithIdentifier(identifier: "toWearList", sender: nil) { (segue) in
                 if let vc = segue.destination as? WearListViewController {
                     vc.subcategoryID = self.subCat[index.row].id
-                    vc.subCatName = self.subCat[index.row].name	
+                    vc.subCatName = self.subCat[index.row].name
+                    UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
                 }
             }
         }

@@ -1,11 +1,3 @@
-//
-//  BasketTableViewCell.swift
-//  BlackStarDiploma
-//
-//  Created by Roman Kuzmich on 06.05.2020.
-//  Copyright © 2020 Roman Kuzmich Home Dev. All rights reserved.
-//
-
 import UIKit
 
 class BasketTableViewCell: UITableViewCell {
@@ -14,16 +6,29 @@ class BasketTableViewCell: UITableViewCell {
     @IBOutlet weak var itemOfferLabel: UILabel!
     @IBOutlet weak var itemPriceLabel: UILabel!
     @IBOutlet weak var itemImage: UIImageView!
+    @IBOutlet weak var deleteButton: UIButton!
+    
+    var delegate: BasketTableViewCellDelegate?
+    var index : IndexPath!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        itemImage.layer.cornerRadius = 10
+        itemImage.clipsToBounds = true
+        deleteButton.addTarget(self, action: #selector(deleteButtonPressed), for: .touchUpInside)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+    }
+    
+    @IBAction func deleteButtonPressed(){
+        self.delegate?.deleteItemButtonPressed(index: index)
     }
 
+}
+
+protocol BasketTableViewCellDelegate {
+    func deleteItemButtonPressed(index: IndexPath)
 }

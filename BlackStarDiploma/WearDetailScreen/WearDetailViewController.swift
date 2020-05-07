@@ -25,6 +25,33 @@ class WearDetailViewController: UIViewController {
     @IBOutlet weak var purchaseView: UIView!
     @IBOutlet weak var purchseViewTrailing: NSLayoutConstraint!
     
+    @IBAction func buyButtonPressed(_ sender: Any) {
+        UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+        
+        let offer = sizeArray[sizePickerView.selectedRow(inComponent: 0)]
+        Basket.shared.basketArray.append(WearWithOffer(item: wear!, offer: offer))
+        
+        buyButton.layer.removeAllAnimations()
+        purchaseView.layer.removeAllAnimations()
+        
+        UIView.animate(withDuration: 0.2,
+        animations: {
+            self.buyButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        },
+        completion: { _ in
+            self.purchseViewTrailing.constant = -100
+            UIView.animate(withDuration: 0.2) {
+                self.buyButton.transform = CGAffineTransform.identity
+                self.view.layoutIfNeeded()
+            }
+        })
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            self.purchseViewTrailing.constant = -200
+            UIView.animate(withDuration: 0.2) {
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
     
     
 //MARK: - viewDidLoad
@@ -47,9 +74,9 @@ class WearDetailViewController: UIViewController {
         imagesCollectView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         imagesCollectView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
         
-        wearNameLabel.text = wear?.name.replacingOccurrences(of: "&amp;", with: " ")
-        wearPriceLabel.text = (wear?.price.split(separator: ".")[0])! + "₽"
-        descriptionLabel.text = wear?.description.replacingOccurrences(of: "&nbsp;", with: " ")
+        wearNameLabel.text = wear?.name.cleanName()
+        wearPriceLabel.text = wear?.price.priceInRubles()
+        descriptionLabel.text = wear?.description.cleanName()
         height.constant += sizePickerView.bounds.height +  (descriptionLabel.text?.heightWithConstrainedWidth(width: self.view.bounds.width, font: descriptionLabel.font) ?? 0)
         
         buyButtonSettingUp()
@@ -91,56 +118,15 @@ class WearDetailViewController: UIViewController {
             cell.imageView.widthAnchor.constraint(equalToConstant: self.view.bounds.width).isActive = true
             cell.widthAnchor.constraint(equalToConstant: self.view.bounds.width).isActive = true
             cell.heightAnchor.constraint(equalTo: cell.widthAnchor, multiplier: 1).isActive = true
-            cell.contentMode = .scaleToFill
             colletView.alpha = 1
             return cell
         }
     }
+    
 //MARK: - buyButtonSettingUp
     fileprivate func buyButtonSettingUp() {
         buyButton.layer.cornerRadius = 10
         buyButton.clipsToBounds = true
-        buyButton.addTarget(nil, action: #selector(buyButtonPressed), for: .touchUpInside)
-    }
-    
-//MARK: - buyButtonPressed
-    @objc func buyButtonPressed(){
-        UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
-        
-        guard let basketVC = storyboard!.instantiateViewController(identifier: "basketVC") as? BasketViewController else { return }
-        let offer = sizeArray[sizePickerView.selectedRow(inComponent: 0)]
-        basketVC.add(item: WearWithOffer(item: wear!, offer: offer))
-        
-        buyButton.layer.removeAllAnimations()
-        purchaseView.layer.removeAllAnimations()
-        UIView.animate(withDuration: 0.2,
-        animations: {
-            self.buyButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-        },
-        completion: { _ in
-            self.purchseViewTrailing.constant = -100
-            UIView.animate(withDuration: 0.2) {
-                self.buyButton.transform = CGAffineTransform.identity
-                self.view.layoutIfNeeded()
-            }
-        })
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            self.purchseViewTrailing.constant = -200
-            UIView.animate(withDuration: 0.2) {
-                self.view.layoutIfNeeded()
-            }
-        }
-    }
-
-
-}
-
-
-extension String {
-    func heightWithConstrainedWidth(width: CGFloat, font: UIFont) -> CGFloat {
-        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-        let boundingBox = self.boundingRect(with: constraintRect, options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: [NSAttributedString.Key.font: font], context: nil)
-        return boundingBox.height
     }
 }
 
