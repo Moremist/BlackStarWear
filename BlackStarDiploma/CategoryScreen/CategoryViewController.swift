@@ -20,6 +20,8 @@ class CategoryViewController: UIViewController {
         categoryTableView.dataSource = self
         categoryTableView.alpha = 0
         
+        tabBarController?.delegate = self
+        
         activityIndicator.alpha = 1
         activityIndicator.startAnimating()
 
@@ -90,5 +92,12 @@ extension CategoryViewController : UITableViewDataSource {
                 UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
             }
         }
+    }
+}
+
+extension CategoryViewController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        guard let vc = viewController as? BasketViewController else { return }
+        vc.basketIsEmptyCheck()
     }
 }
