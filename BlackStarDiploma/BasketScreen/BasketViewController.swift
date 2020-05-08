@@ -114,6 +114,13 @@ extension BasketViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        performSegueWithIdentifier(identifier: "fromBasketToDetail", sender: nil) { (segue) in
+            guard let vc = segue.destination as? WearDetailViewController else { return }
+            vc.wear = self.currentBasket.basketArray[indexPath.row].item
+            vc.imagesURLs = self.currentBasket.basketArray[indexPath.row].item.productImages
+            vc.offers = self.currentBasket.basketArray[indexPath.row].item.offers
+            vc.basketVC = self
+        }
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

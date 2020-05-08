@@ -8,6 +8,7 @@ class WearDetailViewController: UIViewController {
     var offers = Array<Offers>([])
     var defaultImageUrlString: String?
     var categoryName: String?
+    var basketVC: BasketViewController?
     
     @IBOutlet weak var imagesCollectView: UICollectionView!
     @IBOutlet weak var wearPriceLabel: UILabel!
@@ -74,7 +75,11 @@ class WearDetailViewController: UIViewController {
         height.constant +=  (descriptionLabel.text?.heightWithConstrainedWidth(width: self.view.bounds.width, font: descriptionLabel.font) ?? 0)
         
         buyButtonSettingUp()
-        
+         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        basketVC?.basketIsEmptyCheck()
     }
     
 //MARK: - buyButtonSettingUp
