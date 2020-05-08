@@ -1,90 +1,67 @@
 import UIKit
-import Bond
 import Kingfisher
-import ReactiveKit
 
 class SubCategoryViewController: UIViewController {
 
     @IBOutlet weak var subTableView: UITableView!
-    var subcategories: [Subcategory]?
-    var subCat = MutableObservableArray<Subcategory>([])
-    var dispBag = DisposeBag()
+    var subcategories: [Subcategory] = []
     var categoryName : String?
     
     //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        overrideUserInterfaceStyle = .light
         
-        subTableView.delegate = self
-    
-        generateSubCat()
-        configureSubTableViewBinding().dispose(in: dispBag)
-        configureSelectedRowSubTableView().dispose(in: dispBag)
-    }
-    override func viewWillAppear(_ animated: Bool) {
+        overrideUserInterfaceStyle = .light
         navigationItem.title = categoryName
         navigationItem.backBarButtonItem?.title = "Категории"
-        view.layoutIfNeeded()
+        
+        subTableView.delegate = self
+        subTableView.dataSource = self
+        subTableView.reloadData()
+        
     }
     
-    //MARK: - configureSelectedRowSubTableView
-    fileprivate func configureSelectedRowSubTableView() -> Disposable {
-        return subTableView.reactive.selectedRowIndexPath.observeNext { (index) in
-            self.subTableView.deselectRow(at: index, animated: true)
-            self.performSegueWithIdentifier(identifier: "toWearList", sender: nil) { (segue) in
-                if let vc = segue.destination as? WearListViewController {
-                    vc.subcategoryID = self.subCat[index.row].id
-                    vc.subCatName = self.subCat[index.row].name
-                    UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
-                }
-            }
-        }
-    }
-    
-    //MARK: - configureSubTableViewBinding
-    fileprivate func configureSubTableViewBinding() -> Disposable {
-        return subCat.bind(to: subTableView) { (data, indexPath, tableView) -> UITableViewCell in
-            let cell = tableView.dequeueReusableCell(withIdentifier: "subcatCell") as! SubCategoryTableViewCell
-            cell.subCatNameLabel.text = data[indexPath.row].name
-            if data[indexPath.row].iconImage == "" {
-                switch data[indexPath.row].name {
-                case "Скидки":
-                    cell.subCatImageView.image = UIImage(named: "commerce-and-shopping")
-                default:
-                    cell.subCatImageView.image = UIImage(named: "signaling")
-                }
-            } else {
-                let url = URL(string: "https://blackstarshop.ru/" + data[indexPath.row].iconImage)
-                cell.subCatImageView.kf.setImage(with: url)
-            }
-            return cell
-        }
-    }
-    
-    //MARK: - generateSubCat
-    func generateSubCat(){
-        guard let subs = subcategories else {
-            return
-        }
-        for sub in subs {
-            if sub.type == .category {
-                subCat.append(sub)
-            }
-        }
-    }
 }
 
 //MARK: - UITableViewDelegate
 extension SubCategoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.alpha = 0
 
-        UIView.animate(
-            withDuration: 0.5,
-            delay: 0.05 * Double(indexPath.row),
-            animations: {
-                cell.alpha = 1
-        })
+    }
+}
+
+//MARK: - UITableViewDataSource
+extension SubCategoryViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return subcategories.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "subcatCell") as! SubCategoryTableViewCell
+        cell.subCatNameLabel.text = subcategories[indexPath.row].name
+        if subcategories[indexPath.row].iconImage == "" {
+            switch subcategories[indexPath.row].name {
+            case "Скидки":
+                cell.subCatImageView.image = UIImage(named: "commerce-and-shopping")
+            default:
+                cell.subCatImageView.image = UIImage(named: "signaling")
+            }
+        } else {
+            let imageUrl = subcategories[indexPath.row].iconImage
+            let url = BlackStarURLs().getImageURL(imageUrlString: imageUrl)
+            cell.subCatImageView.kf.setImage(with: url)
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        self.performSegueWithIdentifier(identifier: "toWearList", sender: nil) { (segue) in
+            if let vc = segue.destination as? WearListViewController {
+                vc.subcategoryID = self.subcategories[indexPath.row].id
+                vc.subCatName = self.subcategories[indexPath.row].name
+                UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+            }
+        }
     }
 }

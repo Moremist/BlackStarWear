@@ -80,7 +80,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Категории" image="rectangle.grid.2x2.fill" catalog="system" id="Drb-kh-zg1"/>
-                    <navigationItem key="navigationItem" title="Категории" largeTitleDisplayMode="never" id="7NS-gb-GZW"/>
+                    <navigationItem key="navigationItem" title="Категории" largeTitleDisplayMode="always" id="7NS-gb-GZW"/>
                     <connections>
                         <outlet property="activityIndicator" destination="2ED-Bp-gIO" id="r5x-87-QAk"/>
                         <outlet property="categoryTableView" destination="JYx-Pl-WOh" id="Fig-Om-Hly"/>
@@ -503,7 +503,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YPz-c6-2OE">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8R8-81-Waa">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -515,34 +515,34 @@
                                                     <constraint firstAttribute="width" secondItem="dkM-au-DxN" secondAttribute="height" multiplier="1:1" id="C59-MT-B5o"/>
                                                 </constraints>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" sectionInsetReference="safeArea" id="6Lo-eX-JcF">
-                                                    <size key="itemSize" width="402" height="400"/>
+                                                    <size key="itemSize" width="415" height="407"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageCell" id="Dvf-3z-Bos" customClass="WearDetailCollectionViewCell" customModule="Black_Star_Wear" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="7" width="402" height="400"/>
+                                                        <rect key="frame" x="0.0" y="3.6666666666666665" width="415" height="407"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="xFZ-lf-MST">
-                                                            <rect key="frame" x="0.0" y="0.0" width="402" height="400"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="415" height="407"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bswlogo" translatesAutoresizingMaskIntoConstraints="NO" id="e5X-vR-qAi">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="402" height="400"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="415" height="407"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="384" id="VXf-7N-4HW"/>
+                                                                        <constraint firstAttribute="width" secondItem="e5X-vR-qAi" secondAttribute="height" multiplier="1:1" id="BN2-ZG-ORI"/>
                                                                     </constraints>
                                                                 </imageView>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstAttribute="trailing" secondItem="e5X-vR-qAi" secondAttribute="trailing" id="0kD-6S-1qo"/>
-                                                                <constraint firstItem="e5X-vR-qAi" firstAttribute="leading" secondItem="xFZ-lf-MST" secondAttribute="leading" id="4LE-fj-QSG"/>
-                                                                <constraint firstAttribute="bottom" secondItem="e5X-vR-qAi" secondAttribute="bottom" id="4Sn-qp-ZXT"/>
-                                                                <constraint firstItem="e5X-vR-qAi" firstAttribute="top" secondItem="xFZ-lf-MST" secondAttribute="top" id="JHM-qU-hE1"/>
+                                                                <constraint firstAttribute="bottom" secondItem="e5X-vR-qAi" secondAttribute="bottom" id="1il-Ya-Dm3"/>
+                                                                <constraint firstAttribute="trailing" secondItem="e5X-vR-qAi" secondAttribute="trailing" id="CDA-QR-Rof"/>
+                                                                <constraint firstItem="e5X-vR-qAi" firstAttribute="leading" secondItem="xFZ-lf-MST" secondAttribute="leading" id="HQ7-GF-WHd"/>
+                                                                <constraint firstItem="e5X-vR-qAi" firstAttribute="top" secondItem="xFZ-lf-MST" secondAttribute="top" id="ldT-gO-f2e"/>
                                                             </constraints>
                                                         </collectionViewCellContentView>
-                                                        <size key="customSize" width="402" height="400"/>
+                                                        <size key="customSize" width="415" height="407"/>
                                                         <connections>
                                                             <outlet property="imageView" destination="e5X-vR-qAi" id="Sia-yU-kD9"/>
                                                         </connections>
@@ -588,7 +588,7 @@
                                                 </constraints>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZF1-Qn-Ukg">
-                                                <rect key="frame" x="25" y="602" width="364" height="50"/>
+                                                <rect key="frame" x="25" y="582" width="364" height="50"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="mz5-gn-b8E"/>
@@ -602,15 +602,15 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="085-zh-0nf">
-                                                <rect key="frame" x="25" y="672" width="364" height="20.333333333333371"/>
+                                                <rect key="frame" x="25" y="652" width="364" height="20.333333333333371"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ceM-jz-We2">
-                                                <rect key="frame" x="25" y="507" width="364" height="80"/>
+                                                <rect key="frame" x="25" y="507" width="364" height="60"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="80" id="BwH-dW-geg"/>
+                                                    <constraint firstAttribute="height" constant="60" id="BwH-dW-geg"/>
                                                 </constraints>
                                             </pickerView>
                                         </subviews>
@@ -647,16 +647,16 @@
                                 </constraints>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lpl-G3-41V">
-                                <rect key="frame" x="314" y="88" width="200" height="100"/>
+                                <rect key="frame" x="314" y="155" width="200" height="100"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pngfuel.com" translatesAutoresizingMaskIntoConstraints="NO" id="ntZ-T5-L77">
-                                        <rect key="frame" x="10" y="10" width="90" height="80"/>
+                                        <rect key="frame" x="10" y="0.0" width="90" height="90"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="8dF-f6-lEX"/>
-                                    <constraint firstItem="ntZ-T5-L77" firstAttribute="top" secondItem="lpl-G3-41V" secondAttribute="top" constant="10" id="IY0-bE-LGS"/>
+                                    <constraint firstItem="ntZ-T5-L77" firstAttribute="top" secondItem="lpl-G3-41V" secondAttribute="top" id="IY0-bE-LGS"/>
                                     <constraint firstAttribute="width" constant="200" id="Jx3-WN-kLe"/>
                                     <constraint firstAttribute="trailing" secondItem="ntZ-T5-L77" secondAttribute="trailing" constant="100" id="W2g-du-G5l"/>
                                     <constraint firstItem="ntZ-T5-L77" firstAttribute="leading" secondItem="lpl-G3-41V" secondAttribute="leading" constant="10" id="iEs-Nr-S8Z"/>
@@ -671,13 +671,13 @@
                             <constraint firstItem="XeS-m6-mV1" firstAttribute="bottom" secondItem="YPz-c6-2OE" secondAttribute="bottom" id="MnF-eP-K1h"/>
                             <constraint firstItem="8R8-81-Waa" firstAttribute="height" secondItem="JUV-Ol-17C" secondAttribute="height" priority="250" id="b2N-DR-jtZ"/>
                             <constraint firstItem="YPz-c6-2OE" firstAttribute="top" secondItem="XeS-m6-mV1" secondAttribute="top" id="hUU-Mx-pHY"/>
-                            <constraint firstItem="lpl-G3-41V" firstAttribute="top" secondItem="XeS-m6-mV1" secondAttribute="top" id="kmI-hA-0nZ"/>
+                            <constraint firstItem="lpl-G3-41V" firstAttribute="top" secondItem="XeS-m6-mV1" secondAttribute="top" constant="15" id="kmI-hA-0nZ"/>
                             <constraint firstItem="8R8-81-Waa" firstAttribute="width" secondItem="JUV-Ol-17C" secondAttribute="width" id="n4V-Ye-o5m"/>
                             <constraint firstItem="XeS-m6-mV1" firstAttribute="trailing" secondItem="lpl-G3-41V" secondAttribute="trailing" constant="-100" id="zYg-CT-geD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XeS-m6-mV1"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Детали" largeTitleDisplayMode="never" id="cT8-2u-MEC"/>
+                    <navigationItem key="navigationItem" title="Детали" largeTitleDisplayMode="always" id="cT8-2u-MEC"/>
                     <connections>
                         <outlet property="buyButton" destination="ZF1-Qn-Ukg" id="daG-pX-ymD"/>
                         <outlet property="descriptionLabel" destination="085-zh-0nf" id="zbQ-W1-FbG"/>
@@ -736,9 +736,6 @@
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
                                 <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="backGroundColor">
-                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBar>

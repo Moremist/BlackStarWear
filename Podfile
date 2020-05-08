@@ -7,7 +7,5 @@ target 'BlackStarDiploma' do
 
   # Pods for BlackStarDiploma
 	pod 'Alamofire'
-	pod 'RealmSwift'
-	pod 'Bond'
 	pod 'Kingfisher'
 end

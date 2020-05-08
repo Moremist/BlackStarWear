@@ -1,7 +1,6 @@
 import Foundation
-import RealmSwift
 
-class Basket : Object {
+class Basket {
     static let shared = Basket()
     var basketArray = Array<WearWithOffer>([])
 }

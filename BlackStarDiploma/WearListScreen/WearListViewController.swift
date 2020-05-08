@@ -1,8 +1,6 @@
 import UIKit
 import Alamofire
-//import Bond
 import Kingfisher
-//import ReactiveKit
 
 class WearListViewController: UIViewController {
     
@@ -16,18 +14,15 @@ class WearListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        overrideUserInterfaceStyle = .light
+        navigationItem.title = subCatName
+        
         loadWearList()
         configureWearListController()
-        
-//        wearCollectionViewBinding()
-//        wearCollectionViewSelectedRowBinding()
-        
+
         wearListCollectionView.delegate = self
         wearListCollectionView.dataSource = self
     
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        navigationItem.title = subCatName
     }
 
 //MARK: - configureWearListController
@@ -37,51 +32,17 @@ class WearListViewController: UIViewController {
         activityIndicator.center = view.center
         overrideUserInterfaceStyle = .light
     }
-    
-//MARK: - wearCollectionViewBinding
-//    fileprivate func wearCollectionViewBinding() {
-//        wearListArray.bind(to: wearListCollectionView) { (data, index, collectView) -> UICollectionViewCell in
-//
-//            let cell = collectView.dequeueReusableCell(withReuseIdentifier: "wearCell", for: index) as! WearCollectionViewCell
-//            cell.wearNameLabel.text = data[index.row].name
-//            cell.wearPriceLabel.text = String(data[index.row].price.split(separator: ".")[0]) + "₽"
-//            let urlImage = URL(string: "https://blackstarshop.ru/" + data[index.row].mainImage)
-//            cell.wearImageView.kf.setImage(with: urlImage)
-//            cell.wearImageView.contentMode = .scaleAspectFit
-//            cell.wearImageView.layer.cornerRadius = 20
-//            cell.wearImageView.clipsToBounds = true
-//            self.activityIndicator.alpha = 0
-//            self.activityIndicator.stopAnimating()
-//            return cell
-//        }.dispose(in: disposedBag)
-//    }
-    
-//MARK: - wearCollectionViewSelectedRowBinding
-//    fileprivate func wearCollectionViewSelectedRowBinding() {
-//        wearListCollectionView.reactive.selectedItemIndexPath.observeNext { (indexPath) in
-//            self.performSegueWithIdentifier(identifier: "toWearDetail", sender: nil) { (segue) in
-//                if let vc = segue.destination as? WearDetailViewController {
-//                    vc.wear = self.wearListArray[indexPath.row]
-//                }
-//            }
-//        }.dispose(in: disposedBag)
-//    }
-    
+
 }
 
 //MARK: - loadWearList
 extension WearListViewController {
     func loadWearList(){
-        guard let catID = subcategoryID?.valueString() else { return }
-        AF.request("https://blackstarshop.ru/index.php?route=api/v1/products&cat_id=" + catID ).validate().responseJSON { (response) in
-            guard let wears = try? JSONDecoder().decode([String: Wear].self, from: response.data!) else {
-                print("Error while decode")
-                return
-            }
-            for wear in wears {
-                self.wearListArray.append(wear.value)
-            }
+        let url = BlackStarURLs().getProductURLFromID(subcategoryID: subcategoryID!)!
+        Network().fetchArrayFromUrl(url: url, type: Wear.self) { (data) in
+            guard let data = data else { return }
             DispatchQueue.main.async {
+                self.wearListArray = data
                 self.wearListCollectionView.reloadData()
             }
         }
@@ -112,6 +73,8 @@ extension WearListViewController: UICollectionViewDelegate, UICollectionViewData
                 vc.wear = self.wearListArray[indexPath.row]
                 vc.defaultImageUrlString = self.wearListArray[indexPath.row].mainImage
                 vc.categoryName = self.subCatName
+                vc.imagesURLs = self.wearListArray[indexPath.row].productImages
+                vc.offers = self.wearListArray[indexPath.row].offers
                 UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
             }
         }
