@@ -315,7 +315,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FIZ-KV-5ZZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6573.913043478261" y="810.9375"/>
+            <point key="canvasLocation" x="4743" y="861"/>
         </scene>
         <!--Подкатегории-->
         <scene sceneID="iO1-wk-SiZ">
@@ -589,7 +589,7 @@
                                                 </constraints>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZF1-Qn-Ukg">
-                                                <rect key="frame" x="25" y="582" width="364" height="50"/>
+                                                <rect key="frame" x="25" y="597" width="364" height="50"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="mz5-gn-b8E"/>
@@ -603,15 +603,15 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="085-zh-0nf">
-                                                <rect key="frame" x="25" y="652" width="364" height="20.333333333333371"/>
+                                                <rect key="frame" x="25" y="667" width="364" height="20.333333333333371"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ceM-jz-We2">
-                                                <rect key="frame" x="25" y="507" width="364" height="60"/>
+                                                <rect key="frame" x="25" y="507" width="364" height="75"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="BwH-dW-geg"/>
+                                                    <constraint firstAttribute="height" constant="75" id="BwH-dW-geg"/>
                                                 </constraints>
                                             </pickerView>
                                         </subviews>
@@ -722,7 +722,31 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dtb-2D-65s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5721.739130434783" y="137.94642857142856"/>
+            <point key="canvasLocation" x="5674" y="138"/>
+        </scene>
+        <!--Коллекции-->
+        <scene sceneID="dbn-kM-3OI">
+            <objects>
+                <navigationController id="ZCs-4w-SVU" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Коллекции" image="square.fill.on.square.fill" catalog="system" id="526-eQ-lNY"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="v5d-ox-IPm">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Wyb-yo-58W"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gjz-WR-bEL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5674" y="-621"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ChM-r7-jJm">
@@ -742,16 +766,18 @@
                     </tabBar>
                     <connections>
                         <segue destination="00i-4T-EMx" kind="relationship" relationship="viewControllers" id="PM5-Gg-0be"/>
+                        <segue destination="ZCs-4w-SVU" kind="relationship" relationship="viewControllers" id="vvV-U4-6ui"/>
                         <segue destination="CoD-vt-zzL" kind="relationship" relationship="viewControllers" id="Vva-5A-SX9"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6bs-Gt-MZK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5722" y="811"/>
+            <point key="canvasLocation" x="4745" y="138"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Afr-HS-9WO"/>
+        <segue reference="Wyb-yo-58W"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
     <resources>
@@ -761,5 +787,6 @@
         <image name="rectangle.grid.2x2.fill" catalog="system" width="128" height="99"/>
         <image name="rubbish-can (2)" width="64" height="64"/>
         <image name="shopping-cart-empty-side-view" width="512" height="512"/>
+        <image name="square.fill.on.square.fill" catalog="system" width="128" height="113"/>
     </resources>
 </document>

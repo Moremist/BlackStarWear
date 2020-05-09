@@ -4,13 +4,16 @@ import Kingfisher
 
 class WearListViewController: UIViewController {
     
+    //MARK: - variables
     var subcategoryID: ID?
     var wearListArray = Array<Wear>([])
     var subCatName : String?
+    
+    //MARK: - outlets
     @IBOutlet weak var wearListCollectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
-    
+    //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,7 +52,9 @@ extension WearListViewController {
     }
 }
 
+//MARK: - UICollectionViewDelegate
 extension WearListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return wearListArray.count
     }
@@ -67,11 +72,16 @@ extension WearListViewController: UICollectionViewDelegate, UICollectionViewData
         self.activityIndicator.stopAnimating()
         return cell
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.performSegueWithIdentifier(identifier: "toWearDetail", sender: nil) { (segue) in
             if let vc = segue.destination as? WearDetailViewController {
                 vc.wear = self.wearListArray[indexPath.row]
-                vc.defaultImageUrlString = self.wearListArray[indexPath.row].mainImage
+                if self.wearListArray[indexPath.row].productImages.isEmpty {
+                    vc.defaultImageUrlString = self.wearListArray[indexPath.row].mainImage
+                } else {
+                    vc.imagesURLs = self.wearListArray[indexPath.row].productImages
+                }
                 vc.categoryName = self.subCatName
                 vc.imagesURLs = self.wearListArray[indexPath.row].productImages
                 vc.offers = self.wearListArray[indexPath.row].offers

@@ -3,13 +3,15 @@ import Kingfisher
 
 class WearDetailViewController: UIViewController {
     
+    //MARK: - variables
     var wear : Wear?
     var imagesURLs = Array<WearImage>([])
     var offers = Array<Offers>([])
-    var defaultImageUrlString: String?
+    var defaultImageUrlString: String!
     var categoryName: String?
     var basketVC: BasketViewController?
     
+    //MARK: - outlets
     @IBOutlet weak var imagesCollectView: UICollectionView!
     @IBOutlet weak var wearPriceLabel: UILabel!
     @IBOutlet weak var buyButton: UIButton!
@@ -22,6 +24,7 @@ class WearDetailViewController: UIViewController {
     @IBOutlet weak var purchaseView: UIView!
     @IBOutlet weak var purchseViewTrailing: NSLayoutConstraint!
     
+    //MARK: - buyButtonPressed
     @IBAction func buyButtonPressed(_ sender: Any) {
         UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
         
@@ -59,6 +62,9 @@ class WearDetailViewController: UIViewController {
         navigationItem.backBarButtonItem?.title = categoryName
         
         pageControll.numberOfPages = imagesURLs.count
+        if imagesURLs.isEmpty {
+            imagesURLs.append(WearImage(imageURL: defaultImageUrlString, sortOrder: "1"))
+        }
         
         purchaseView.layer.cornerRadius = 20
         purchaseView.clipsToBounds = true
@@ -78,6 +84,7 @@ class WearDetailViewController: UIViewController {
          
     }
     
+    //MARK: - viewWillDisappear
     override func viewWillDisappear(_ animated: Bool) {
         basketVC?.basketIsEmptyCheck()
     }
@@ -98,6 +105,7 @@ extension WearDetailViewController: UICollectionViewDelegate {
 
 }
 
+//MARK: - UICollectionViewDataSource
 extension WearDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imagesURLs.count

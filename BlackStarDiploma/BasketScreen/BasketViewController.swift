@@ -2,8 +2,11 @@ import UIKit
 import Kingfisher
 
 class BasketViewController: UIViewController {
+    
+    //MARK: - variables
+    var currentBasket = Basket()
 
-
+    //MARK: - outlets
     @IBOutlet weak var checkoutButton: UIButton!
     @IBOutlet weak var basketTableView: UITableView!
     @IBOutlet weak var emptyStack: UIStackView!
@@ -38,8 +41,6 @@ class BasketViewController: UIViewController {
         }
         print(currentBasket.basketArray)
     }
-    
-    var currentBasket = Basket()
     
     //MARK: - viewDidLoad
     override func viewDidLoad() {

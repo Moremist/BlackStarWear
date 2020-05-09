@@ -1,5 +1,6 @@
 import Foundation
 
+//MARK: - BlackStarURLs class
 class BlackStarURLs {
     let defaultBSString: String = "https://blackstarshop.ru/"
     let categoriesBSString: String = "https://blackstarshop.ru/index.php?route=api/v1/categories"

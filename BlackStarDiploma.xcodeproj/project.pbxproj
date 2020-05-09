@@ -101,11 +101,9 @@
 		6F13661E245D91C200CF541C /* BlackStarDiploma */ = {
 			isa = PBXGroup;
 			children = (
-				6F136625245D91C200CF541C /* Main.storyboard */,
+				6F13662D245D91C800CF541C /* Info.plist */,
 				6F6713E52462BE1200EA57D0 /* BasketScreen */,
 				6FC35148245EC80500C34793 /* WearDetailScreen */,
-				6F136628245D91C800CF541C /* Assets.xcassets */,
-				6F13662D245D91C800CF541C /* Info.plist */,
 				6F136646245DDAE800CF541C /* WearListScreen */,
 				6F136643245DC9AF00CF541C /* Helpers */,
 				6F13663C245DAA0E00CF541C /* SubCategoryScreen */,
@@ -136,7 +134,9 @@
 		6F136643245DC9AF00CF541C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				6F136625245D91C200CF541C /* Main.storyboard */,
 				6F13662A245D91C800CF541C /* LaunchScreen.storyboard */,
+				6F136628245D91C800CF541C /* Assets.xcassets */,
 				6F136621245D91C200CF541C /* SceneDelegate.swift */,
 				6F13661F245D91C200CF541C /* AppDelegate.swift */,
 				6F136641245DBC5600CF541C /* SegueSwizzler.swift */,

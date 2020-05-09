@@ -1,7 +1,7 @@
 import Foundation
 import Alamofire
 
-
+//MARK: - Network class
 class Network {
     func fetchArrayFromUrl<T: Decodable>(url: URL, type: T.Type,completion: @escaping ([T]?) -> Void){
  

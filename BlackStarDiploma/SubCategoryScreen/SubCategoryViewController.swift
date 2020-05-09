@@ -2,10 +2,13 @@ import UIKit
 import Kingfisher
 
 class SubCategoryViewController: UIViewController {
-
-    @IBOutlet weak var subTableView: UITableView!
+    
+    //MARK: - variables
     var subcategories: [Subcategory] = []
     var categoryName : String?
+
+    //MARK: - outlets
+    @IBOutlet weak var subTableView: UITableView!
     
     //MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -18,6 +21,10 @@ class SubCategoryViewController: UIViewController {
         subTableView.delegate = self
         subTableView.dataSource = self
         subTableView.reloadData()
+        
+        subcategories = subcategories.filter({ (s1) -> Bool in
+            return s1.name != "Natan"
+        })
         
     }
     

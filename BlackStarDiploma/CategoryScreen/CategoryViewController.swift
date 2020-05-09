@@ -4,8 +4,10 @@ import Kingfisher
 
 class CategoryViewController: UIViewController {
 
+    //MARK:- variables
     var categoriesArray = Array<Category>([])
     
+    //MARK: - outlets
     @IBOutlet weak var categoryTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
@@ -13,6 +15,11 @@ class CategoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
+        if self.tabBarController?.selectedIndex == 0 {
+            navigationItem.title = "Категории"
+        } else {
+            navigationItem.title = "Коллекции"
+        }
         
         downloadCategories()
     
@@ -21,6 +28,7 @@ class CategoryViewController: UIViewController {
         categoryTableView.alpha = 0
         
         tabBarController?.delegate = self
+        
         
         activityIndicator.alpha = 1
         activityIndicator.startAnimating()
@@ -33,7 +41,20 @@ class CategoryViewController: UIViewController {
         Network().fetchArrayFromUrl(url: BlackStarURLs().getCatURL()!, type: Category.self) { (data) in
             guard let data = data else { return }
             DispatchQueue.main.async {
-                self.categoriesArray = data
+                if self.tabBarController?.selectedIndex == 0 {
+                    self.categoriesArray = data.filter({ (c1) -> Bool in
+                        return c1.subcategories.contains { (s1) -> Bool in
+                            return s1.type == .category
+                        }
+                    })
+                } else {
+                    self.categoriesArray = data.filter({ (c1) -> Bool in
+                        return c1.subcategories.contains { (s1) -> Bool in
+                            return s1.type == .collection
+                        }
+                    })
+                }
+
                 self.categoryTableView.reloadData()
             }
         }
@@ -85,9 +106,17 @@ extension CategoryViewController : UITableViewDataSource {
         self.categoryTableView.deselectRow(at: indexPath, animated: true)
         self.performSegueWithIdentifier(identifier: "toSubCat", sender: nil) { (segue) in
             if let vc = segue.destination as? SubCategoryViewController {
-                vc.subcategories = self.categoriesArray[indexPath.row].subcategories.filter({ (s1) -> Bool in
-                    return s1.type == .category
-                })
+                if self.tabBarController?.selectedIndex == 0 {
+                    vc.subcategories = self.categoriesArray[indexPath.row].subcategories.filter({ (s1) -> Bool in
+                        return s1.type == .category
+                    })
+                } else {
+                    vc.subcategories = self.categoriesArray[indexPath.row].subcategories.filter({ (s1) -> Bool in
+                        return s1.type == .collection
+                    })
+                }
+                
+
                 vc.categoryName = self.categoriesArray[indexPath.row].name
                 UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
             }
@@ -95,6 +124,7 @@ extension CategoryViewController : UITableViewDataSource {
     }
 }
 
+//MARK: - UITabBarControllerDelegate
 extension CategoryViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         guard let vc = viewController as? BasketViewController else { return }
