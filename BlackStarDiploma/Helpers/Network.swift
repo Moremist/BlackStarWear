@@ -14,7 +14,7 @@ class Network {
             case is Category.Type:
                 let array = Array(data.values) as! [Category]
                 let sortedAndFilteredArray = array.sorted { (c1, c2) -> Bool in
-                    return c1.sortOrder < c2.sortOrder
+                    return c1.sortOrder.valueInt() < c2.sortOrder.valueInt()
                 }.filter { !$0.subcategories.isEmpty}
                 completion(sortedAndFilteredArray as? [T])
             case is Wear.Type:

@@ -3,7 +3,8 @@ import UIKit
 
 //MARK: - Main category
 struct Category: Codable {
-    let name, sortOrder, image, iconImage: String
+    let name, image, iconImage: String
+    let sortOrder: ID
     let iconImageActive: String
     let subcategories: [Subcategory]
 }
@@ -52,7 +53,16 @@ enum ID: Codable {
             return String(value)
         }
     }
+    func valueInt() -> Int {
+        switch self {
+        case .integer(let value):
+            return value
+        case .string(let value):
+            return Int(value)!
+        }
+    }
 }
+
 
 //MARK: - TypeEnum
 enum TypeEnum: String, Codable {
