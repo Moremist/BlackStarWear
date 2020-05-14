@@ -20,7 +20,7 @@ class Network {
             case is Wear.Type:
                 let array = Array(data.values) as! [Wear]
                 let sortedAndFilteredArray = array.sorted { (w1, w2) -> Bool in
-                    return w1.sortOrder < w2.sortOrder
+                    return w1.sortOrder.valueInt() < w2.sortOrder.valueInt()
                 }
                 completion(sortedAndFilteredArray as? [T])
             default:

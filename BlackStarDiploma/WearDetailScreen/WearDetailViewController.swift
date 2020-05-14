@@ -74,6 +74,9 @@ class WearDetailViewController: UIViewController {
         imagesCollectView.dataSource = self
         sizePickerView.delegate = self
         sizePickerView.dataSource = self
+        if offers.count == 1 {
+            self.sizePickerView.alpha = 0.5
+        }
         
         wearNameLabel.text = wear?.name.cleanName()
         wearPriceLabel.text = wear?.price.priceInRubles()
