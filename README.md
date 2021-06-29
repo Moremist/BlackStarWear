@@ -1,4 +1,6 @@
-# BlackStarWear Shop
+![image](https://user-images.githubusercontent.com/86111316/123775506-1a8dc900-d8d7-11eb-9321-c0207a161b22.png)
+
+# BlackStarWear APP
 
 В рамках дипломного проекта разработал приложение-магазин для магазина одежды BlackStar. 
 
@@ -18,3 +20,5 @@ https://blackstarshop.ru/index.php?route=api/v1/categories
 + WearListScreen - экран отображения товаров
 + WearDetailScreen - экран с детальным описание товара, галереей фотографиц, спектром параметров и кнопкой "Добавить в корзину"
 + BasketScreen - экран корзины, есть возможность очистки корзины (в том числе Swipe-to-delete), перехода в карточку товара
+
+## Скриншоты:
