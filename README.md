@@ -1,4 +1,4 @@
-# BlackStarWear_Diploma
+# BlackStarWear Shop
 
 В рамках дипломного проекта разработал приложение-магазин для магазина одежды BlackStar. 
 
@@ -6,7 +6,7 @@
 
 https://blackstarshop.ru/index.php?route=api/v1/categories
 
-## Зависимости
+## Зависимости (Cocoapods):
 
 + Alamofire - учавствует в работе с сетью
 + KingFisher - для удобства ассинхронного скачивания и установки изображений
