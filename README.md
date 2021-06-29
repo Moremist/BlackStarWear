@@ -22,3 +22,4 @@ https://blackstarshop.ru/index.php?route=api/v1/categories
 + BasketScreen - экран корзины, есть возможность очистки корзины (в том числе Swipe-to-delete), перехода в карточку товара
 
 ## Скриншоты:
+
