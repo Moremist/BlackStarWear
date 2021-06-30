@@ -23,4 +23,5 @@ https://blackstarshop.ru/index.php?route=api/v1/categories
 
 ## Скриншоты:
 
-![Fotoram io (1)](https://user-images.githubusercontent.com/86111316/123863682-923d1180-d932-11eb-99ec-ea29e768908b.jpg)
+![merge_from_ofoct](https://user-images.githubusercontent.com/86111316/123908688-88da9600-d980-11eb-99e1-c5c006e447f0.jpg)
+
